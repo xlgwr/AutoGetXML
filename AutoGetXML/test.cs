@@ -1,4 +1,5 @@
 ﻿using AutoGetXML.Basic;
+using AutoGetXML.DAL;
 using log4net;
 using Quartz;
 using Quartz.Impl;
@@ -28,7 +29,21 @@ namespace AutoGetXML
         {
             logger.Debug(message);
             logger.Info(message);
-
+            //test
+            logger.Debug("执行清理任务!!!!!!!!!!!!!!!");
+            using (MysqlDbContext dbcontext = new MysqlDbContext())
+            {
+                try
+                {
+                    logger.DebugFormat("test!");
+                    var dd = dbcontext.t_Interface.ToList();
+                    logger.Debug(dd.Count);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("test", ex);
+                }
+            }
         }
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {

@@ -102,7 +102,14 @@
     <Compile Include="Basic\Logging\ILogger.cs" />
     <Compile Include="Basic\Logging\Logger.cs" />
     <Compile Include="Basic\WinLogWirter.cs" />
+    <Compile Include="Dal\DbInitializer.cs" />
+    <Compile Include="Dal\MysqlDbContext.cs" />
+    <Compile Include="Dal\MysqlDbInterceptorLogging.cs" />
+    <Compile Include="Dal\MysqlDbInterceptorTransientErrors.cs" />
     <Compile Include="HttpClientHelper.cs" />
+    <Compile Include="Model\m_Parameter.cs" />
+    <Compile Include="Model\t_Interface.cs" />
+    <Compile Include="Model\t_SysLogRecd.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>
