@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : mysql
 Source Server Version : 50626
 Source Host           : 127.0.0.1:3306
-Source Database       : whs
+Source Database       : anxinwh
 
 Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2015-09-02 13:12:31
+Date: 2015-09-02 16:03:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -206,6 +206,161 @@ CREATE TABLE `t_interface` (
 -- Records of t_interface
 -- ----------------------------
 INSERT INTO `t_interface` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1');
+
+-- ----------------------------
+-- Table structure for t_stockin
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockin`;
+CREATE TABLE `t_stockin` (
+  `stockin_no` varchar(32) NOT NULL,
+  `stockin_date` datetime DEFAULT NULL,
+  `user_no` varchar(16) DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `op_no` varchar(30) DEFAULT NULL,
+  `remark` varchar(256) NOT NULL,
+  `adduser` varchar(16) NOT NULL,
+  `upduser` varchar(16) NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`stockin_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_stockin
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_stockinctnno
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockinctnno`;
+CREATE TABLE `t_stockinctnno` (
+  `ctnno_id` varchar(32) NOT NULL,
+  `stockin_no` varchar(32) DEFAULT NULL,
+  `item_no` varchar(10) DEFAULT NULL,
+  `prdct_no` varchar(48) DEFAULT NULL,
+  `ctnno_no` varchar(30) DEFAULT NULL,
+  `qty` float DEFAULT NULL,
+  `nwet` float NOT NULL,
+  `gwet` float NOT NULL,
+  `rfid_no` varchar(30) DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `adduser` varchar(16) NOT NULL,
+  `upduser` varchar(16) NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`ctnno_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_stockinctnno
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_stockindetail
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockindetail`;
+CREATE TABLE `t_stockindetail` (
+  `stockin_no` varchar(32) NOT NULL,
+  `in_item_no` varchar(10) NOT NULL,
+  `bespeak_no` varchar(30) NOT NULL,
+  `item_no` varchar(10) NOT NULL,
+  `prdct_no` varchar(48) DEFAULT NULL,
+  `pc` varchar(30) NOT NULL,
+  `pqty` float DEFAULT NULL,
+  `qty` float NOT NULL,
+  `nwet` float NOT NULL,
+  `gwet` float NOT NULL,
+  `quanlity` varchar(20) NOT NULL,
+  `remark` varchar(256) DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `adduser` varchar(16) NOT NULL,
+  `upduser` varchar(16) NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`stockin_no`,`in_item_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_stockindetail
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_stockout
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockout`;
+CREATE TABLE `t_stockout` (
+  `stockout_no` varchar(32) NOT NULL,
+  `stockout_date` datetime DEFAULT NULL,
+  `user_no` varchar(16) DEFAULT NULL,
+  `pickup_user` varchar(16) DEFAULT NULL,
+  `pickup_card` varchar(32) DEFAULT NULL,
+  `pickup_mobile` varchar(32) DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `remark` varchar(256) NOT NULL,
+  `adduser` varchar(16) NOT NULL,
+  `upduser` varchar(16) NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`stockout_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_stockout
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_stockoutctnno
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockoutctnno`;
+CREATE TABLE `t_stockoutctnno` (
+  `ctnno_id` varchar(32) NOT NULL,
+  `stockin_no` varchar(32) DEFAULT NULL,
+  `item_no` varchar(10) DEFAULT NULL,
+  `prdct_no` varchar(48) DEFAULT NULL,
+  `ctnno_no` varchar(30) DEFAULT NULL,
+  `qty` float DEFAULT NULL,
+  `nwet` float NOT NULL,
+  `gwet` float NOT NULL,
+  `rfid_no` varchar(30) DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `adduser` varchar(16) NOT NULL,
+  `upduser` varchar(16) NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`ctnno_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_stockoutctnno
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_stockoutdetail
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockoutdetail`;
+CREATE TABLE `t_stockoutdetail` (
+  `stockout_no` varchar(32) NOT NULL,
+  `out_item_no` varchar(10) NOT NULL,
+  `cash_no` varchar(30) NOT NULL,
+  `item_no` varchar(10) NOT NULL,
+  `prdct_no` varchar(48) DEFAULT NULL,
+  `pc` varchar(30) NOT NULL,
+  `pqty` float DEFAULT NULL,
+  `qty` float NOT NULL,
+  `nwet` float NOT NULL,
+  `gwet` float NOT NULL,
+  `quanlity` varchar(20) NOT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `adduser` varchar(16) NOT NULL,
+  `upduser` varchar(16) NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`stockout_no`,`out_item_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_stockoutdetail
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_syslogrecd
