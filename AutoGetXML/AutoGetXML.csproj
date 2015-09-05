@@ -107,6 +107,7 @@
     <Compile Include="Dal\MysqlDbInterceptorLogging.cs" />
     <Compile Include="Dal\MysqlDbInterceptorTransientErrors.cs" />
     <Compile Include="HttpClientHelper.cs" />
+    <Compile Include="job\AutoGetXmlJob.cs" />
     <Compile Include="Model\m_Parameter.cs" />
     <Compile Include="Model\t_Interface.cs" />
     <Compile Include="Model\t_SysLogRecd.cs" />
@@ -121,7 +122,9 @@
     <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -131,6 +134,13 @@
     <None Include="_srv_stop.cmd" />
     <None Include="_srv_uninstall.cmd" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CWRE856Message.xml" />
+    <Content Include="CWRE861Message.xml" />
+    <Content Include="CWRE940Message.xml" />
+    <Content Include="CWRE945Message.xml" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
