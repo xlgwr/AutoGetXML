@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AutoGetXML.Model
+namespace AutoGetXML.Model.view
 {
-    public class StorageList
+    public class StorageList945
     {
         public string itemNo { get; set; }
         public string materialCode { get; set; }

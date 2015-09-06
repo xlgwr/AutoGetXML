@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic\comm.cs" />
     <Compile Include="Basic\Logging\ILogger.cs" />
     <Compile Include="Basic\Logging\Logger.cs" />
     <Compile Include="Basic\WinLogWirter.cs" />
@@ -110,12 +111,12 @@
     <Compile Include="job\AutoGetXmlJob.cs" />
     <Compile Include="Model\view\MessageBody945.cs" />
     <Compile Include="Model\m_Parameter.cs" />
-    <Compile Include="Model\StorageList.cs" />
+    <Compile Include="Model\view\StorageList945.cs" />
     <Compile Include="Model\t_Interface.cs" />
     <Compile Include="Model\t_SysLogRecd.cs" />
     <Compile Include="Model\view\inbound945.cs" />
     <Compile Include="Model\view\MessageHead.cs" />
-    <Compile Include="Model\view\StorageHead.cs" />
+    <Compile Include="Model\view\StorageHead945.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>

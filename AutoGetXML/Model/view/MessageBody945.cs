@@ -5,9 +5,9 @@ using System.Text;
 
 namespace AutoGetXML.Model.view
 {
-    public   class MessageBody945
+    public class MessageBody945
     {
-        public StorageHead storageHead { get; set; }
-        public StorageList storageList { get; set; }
+        public StorageHead945 storageHead { get; set; }
+        public IList<StorageList945> storageLists { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AutoGetXML.Model.view
 {
-    public class StorageHead
+    public class StorageHead945
     {
         public string appType { get; set; }
         public string appTime { get; set; }
