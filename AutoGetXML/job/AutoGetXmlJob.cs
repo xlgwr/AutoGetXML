@@ -28,7 +28,7 @@ namespace AutoGetXML.Job
                     {
                         //1：入库申请 2：入库结果 3：上架结果 4:仓单获取 
                         //5：出库申请 6：出库结果 7：调货视频  8：库位视频
-                        logger.Debug("1：入库申请 2：入库结果 3：上架结果 4:仓单获取 5：出库申请 6：出库结果 7：调货视频  8：库位视频");
+                        logger.Debug("1：入库申请 2：入库结果 3：上架结果 4：仓单获取 5：出库申请 6：出库结果 7：调货视频  8：库位视频");
 
                         var tmpcurrType = "";
                         foreach (var item in tmpInterface)
@@ -50,7 +50,7 @@ namespace AutoGetXML.Job
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
 
                                             string Url = item.address;
                                             try
@@ -70,7 +70,7 @@ namespace AutoGetXML.Job
                                                 }
                                                 else
                                                 {
-                                                    logger.DebugFormat("**********当前接口:{0},没有获取任何内容：{1}。", tmpcurrType, ret);
+                                                    logger.DebugFormat("**********##########当前接口:{0},没有获取任何内容：{1}。", tmpcurrType, ret);
                                                 }
                                             }
                                             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace AutoGetXML.Job
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
                                         }
 
                                         break;
@@ -90,11 +90,11 @@ namespace AutoGetXML.Job
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
 
                                             string Url = item.address;
                                             try
@@ -115,7 +115,7 @@ namespace AutoGetXML.Job
                                                 }
                                                 else
                                                 {
-                                                    logger.DebugFormat("**********当前接口:{0},没有获取任何内容：{1}。", tmpcurrType, ret);
+                                                    logger.DebugFormat("**********##########当前接口:{0},没有获取任何内容：{1}。", tmpcurrType, ret);
                                                 }
                                             }
                                             catch (Exception ex)
@@ -130,23 +130,23 @@ namespace AutoGetXML.Job
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
                                         }
                                         break;
                                     case 4:
-                                        tmpcurrType = "4:仓单获取";
+                                        tmpcurrType = "4：仓单获取";
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
                                         }
                                         break;
                                     case 5:
@@ -154,11 +154,11 @@ namespace AutoGetXML.Job
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
                                         }
                                         break;
                                     case 6:
@@ -166,11 +166,11 @@ namespace AutoGetXML.Job
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
                                         }
                                         break;
                                     case 7:
@@ -178,11 +178,11 @@ namespace AutoGetXML.Job
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
                                         }
                                         break;
                                     case 8:
@@ -190,11 +190,11 @@ namespace AutoGetXML.Job
                                         //0：下载  1：上传
                                         if (item.downtype == 0)
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始下载。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始下载。", tmpcurrType, item.address);
                                         }
                                         else
                                         {
-                                            logger.DebugFormat("**********当前接口:{0},开始上传。", tmpcurrType);
+                                            logger.DebugFormat("**********##########当前接口:{0},Url:{1}  开始上传。", tmpcurrType, item.address);
                                         }
                                         break;
 
