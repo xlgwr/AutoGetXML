@@ -27,7 +27,10 @@ namespace AutoGetXML
 
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(
-               new MediaTypeWithQualityHeaderValue("application/json"));
+               new MediaTypeWithQualityHeaderValue("application/xml"));
+            httpClient.DefaultRequestHeaders.AcceptCharset.Add(
+                new StringWithQualityHeaderValue("UTF-8"));
+
             HttpResponseMessage response = httpClient.GetAsync(url).Result;
 
             if (response.IsSuccessStatusCode)
@@ -46,7 +49,10 @@ namespace AutoGetXML
 
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(
-               new MediaTypeWithQualityHeaderValue("application/json"));
+               new MediaTypeWithQualityHeaderValue("application/xml"));
+            httpClient.DefaultRequestHeaders.AcceptCharset.Add(
+                new StringWithQualityHeaderValue("UTF-8"));
+
             HttpResponseMessage response = httpClient.GetAsync(url).Result;
 
             T result = default(T);
@@ -73,7 +79,11 @@ namespace AutoGetXML
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
 
             HttpContent httpContent = new StringContent(postData);
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            //Content-Type: text/plain; charset=utf-8
+            //application/xml,text/xml
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("text/plain");
+            httpContent.Headers.Add("charset", "utf-8"); 
+
             HttpClient httpClient = new HttpClient();
 
             HttpResponseMessage response = httpClient.PostAsync(url, httpContent).Result;
@@ -100,7 +110,7 @@ namespace AutoGetXML
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
 
             HttpContent httpContent = new StringContent(postData);
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
             HttpClient httpClient = new HttpClient();
 
             T result = default(T);
@@ -130,7 +140,7 @@ namespace AutoGetXML
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
 
             HttpContent httpContent = new StringContent(xmlString);
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
             HttpClient httpClient = new HttpClient();
 
             T result = default(T);

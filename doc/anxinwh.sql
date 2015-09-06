@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2015-09-02 16:03:51
+Date: 2015-09-06 12:57:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -184,6 +184,7 @@ CREATE TABLE `m_users` (
 -- ----------------------------
 -- Records of m_users
 -- ----------------------------
+INSERT INTO `m_users` VALUES ('9001', 'xlg', 'it', '123', '0', '0', '1', 'xlg', 'xlg', '2015-09-02 18:42:46', '2015-09-02 18:42:49', 'it');
 
 -- ----------------------------
 -- Table structure for t_interface
@@ -200,12 +201,19 @@ CREATE TABLE `t_interface` (
   `remark` varchar(256) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`recd_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_interface
 -- ----------------------------
-INSERT INTO `t_interface` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `t_interface` VALUES ('1', 'http://127.0.0.1:3000/whs/inbound', '1', '2015-09-05 13:31', '0', 'getfilepath', '0', '1', '0');
+INSERT INTO `t_interface` VALUES ('2', 'http://127.0.0.1:3000/whs/goods_receipt', '2', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
+INSERT INTO `t_interface` VALUES ('3', 'http://127.0.0.1:3000/whs/goods_movement/', '3', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
+INSERT INTO `t_interface` VALUES ('4', 'http://127.0.0.1:3000/whs/xxxxxx/', '4', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
+INSERT INTO `t_interface` VALUES ('5', 'http://127.0.0.1:3000/whs/outbound', '5', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
+INSERT INTO `t_interface` VALUES ('6', 'http://127.0.0.1:3000/whs/goods_issue', '6', '2015-09-05 13:31', '0', 'getfilepath', '0', '1', '0');
+INSERT INTO `t_interface` VALUES ('7', 'http://127.0.0.1:3000/whs/xxxxxx/', '7', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
+INSERT INTO `t_interface` VALUES ('8', 'http://127.0.0.1:3000/whs/xxxxx/', '8', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
 
 -- ----------------------------
 -- Table structure for t_stockin

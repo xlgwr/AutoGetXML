@@ -108,9 +108,14 @@
     <Compile Include="Dal\MysqlDbInterceptorTransientErrors.cs" />
     <Compile Include="HttpClientHelper.cs" />
     <Compile Include="job\AutoGetXmlJob.cs" />
+    <Compile Include="Model\view\MessageBody945.cs" />
     <Compile Include="Model\m_Parameter.cs" />
+    <Compile Include="Model\StorageList.cs" />
     <Compile Include="Model\t_Interface.cs" />
     <Compile Include="Model\t_SysLogRecd.cs" />
+    <Compile Include="Model\view\inbound945.cs" />
+    <Compile Include="Model\view\MessageHead.cs" />
+    <Compile Include="Model\view\StorageHead.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -135,10 +140,18 @@
     <None Include="_srv_uninstall.cmd" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CWRE856Message.xml" />
-    <Content Include="CWRE861Message.xml" />
-    <Content Include="CWRE940Message.xml" />
-    <Content Include="CWRE945Message.xml" />
+    <None Include="goods_issue_CWRE856Message.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="goods_receipt_CWRE861Message.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="outbound_CWRE940Message.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="inbound_CWRE945Message.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

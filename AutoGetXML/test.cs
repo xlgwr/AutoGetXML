@@ -43,29 +43,39 @@ namespace AutoGetXML
 
         public void OnStart()
         {
-            scheduler.Start();
-            AllMsg("Quartz服务成功启动.");
+            try
+            {
+                scheduler.Start();
+                AllMsg("Quartz服务成功启动.");
 
-            DateTimeOffset runTime = DateBuilder.EvenSecondDate(DateTimeOffset.Now);
+                DateTimeOffset runTime = DateBuilder.EvenSecondDate(DateTimeOffset.Now);
 
-            //get
-            #region satrtAutoGetXml job
-            taskMin = setTaskMin();
+                //get
+                #region satrtAutoGetXml job
 
-            IJobDetail AutoGetXml_job = JobBuilder.Create<AutoGetXmlJob>().WithIdentity("autoGetXMLjob", "autoGetXMLGroup").Build();
+                taskMin = setTaskMin();
 
-            ITrigger AutoGetXml_trigger = TriggerBuilder.Create()
-                .WithIdentity("autoGetXMLTrigger", "autoGetXMLGroup")
-                .StartAt(runTime)
-                .WithSimpleSchedule(x => x.WithIntervalInSeconds(taskMin).RepeatForever())
-                .Build();
+                IJobDetail AutoGetXml_job = JobBuilder.Create<AutoGetXmlJob>().WithIdentity("autoGetXMLjob", "autoGetXMLGroup").Build();
+
+                ITrigger AutoGetXml_trigger = TriggerBuilder.Create()
+                    .WithIdentity("autoGetXMLTrigger", "autoGetXMLGroup")
+                    .StartAt(runTime)
+                    .WithSimpleSchedule(x => x.WithIntervalInSeconds(taskMin).RepeatForever())
+                    .Build();
 
 
-            // Tell quartz to schedule the job using our trigger
-            scheduler.ScheduleJob(AutoGetXml_job, AutoGetXml_trigger);
-            #endregion
+                // Tell quartz to schedule the job using our trigger
+                scheduler.ScheduleJob(AutoGetXml_job, AutoGetXml_trigger);
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
+
         }
 
+        public int taskMin { get; set; }
         private int setTaskMin()
         {
             using (MysqlDbContext dbcontext = new MysqlDbContext())
@@ -140,6 +150,5 @@ namespace AutoGetXML
             scheduler.ResumeAll();
         }
 
-        public int taskMin { get; set; }
     }
 }
