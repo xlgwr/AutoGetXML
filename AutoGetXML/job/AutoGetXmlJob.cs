@@ -68,10 +68,10 @@ namespace AutoGetXML.Job
                                                     XmlDocument doc = new XmlDocument();
                                                     doc.LoadXml(ret);
                                                     //root=CWRE945Message
-                                                    XmlNode xn = doc.SelectSingleNode("CWRE945Message");
+                                                    XmlNode xnroot = doc.SelectSingleNode("CWRE945Message");
 
                                                     //get all child node
-                                                    XmlNodeList xnlist = xn.ChildNodes;
+                                                    XmlNodeList xnlist = xnroot.ChildNodes;
                                                     tmp945.messageHead = new MessageHead();
                                                     tmp945.messageBody = new MessageBody945();
                                                     tmp945.messageBody.storageHead = new StorageHead945();
@@ -114,6 +114,7 @@ namespace AutoGetXML.Job
                                                                 break;
                                                         }
                                                     }
+                                                    //save data to DB
                                                 }
                                                 else
                                                 {

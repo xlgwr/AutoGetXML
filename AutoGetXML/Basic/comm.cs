@@ -88,7 +88,7 @@ namespace AutoGetXML.Basic
             System.Reflection.PropertyInfo[] ps = type.GetProperties();
             foreach (PropertyInfo i in ps)
             {
-                var xeValueForName = xe.GetElementsByTagName(i.Name).Item(0).InnerText.Replace("\n\r", "").Trim();
+                var xeValueForName = xe.GetElementsByTagName(i.Name).Item(0).InnerText.Replace("\r\n", "").Trim();
                 SetValue<T>(tobj, i.Name, xeValueForName);
             }
             return tobj;
