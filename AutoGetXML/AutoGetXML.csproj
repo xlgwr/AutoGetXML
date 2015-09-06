@@ -109,8 +109,15 @@
     <Compile Include="Dal\MysqlDbInterceptorTransientErrors.cs" />
     <Compile Include="HttpClientHelper.cs" />
     <Compile Include="job\AutoGetXmlJob.cs" />
+    <Compile Include="Model\iview\iStorageHead.cs" />
+    <Compile Include="Model\view\MessageBody861.cs" />
+    <Compile Include="Model\view\MessageBody940.cs" />
     <Compile Include="Model\view\MessageBody945.cs" />
     <Compile Include="Model\m_Parameter.cs" />
+    <Compile Include="Model\view\StorageHead861.cs" />
+    <Compile Include="Model\view\StorageHead940.cs" />
+    <Compile Include="Model\view\StorageList861.cs" />
+    <Compile Include="Model\view\StorageList940.cs" />
     <Compile Include="Model\view\StorageList945.cs" />
     <Compile Include="Model\t_Interface.cs" />
     <Compile Include="Model\t_SysLogRecd.cs" />
