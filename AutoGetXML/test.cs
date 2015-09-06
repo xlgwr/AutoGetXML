@@ -92,9 +92,9 @@ namespace AutoGetXML
                         {
                             logger.DebugFormat("**获取job分钟成功：{0}，currMin:{1}", tmptaskMin, ttaskMin);
 
-                            if (ttaskMin < 10)
+                            if (ttaskMin < 5)
                             {
-                                ttaskMin = 10;
+                                ttaskMin = 5;
                             }
                         }
                     }

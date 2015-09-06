@@ -29,7 +29,7 @@ namespace AutoGetXML.Job
                         //1：入库申请 2：入库结果 3：上架结果 4:仓单获取 
                         //5：出库申请 6：出库结果 7：调货视频  8：库位视频
                         logger.Debug("1：入库申请 2：入库结果 3：上架结果 4:仓单获取 5：出库申请 6：出库结果 7：调货视频  8：库位视频");
-                        
+
                         var tmpcurrType = "";
                         foreach (var item in tmpInterface)
                         {
@@ -61,19 +61,12 @@ namespace AutoGetXML.Job
                                                     logger.DebugFormat("***GetResponse:{0}", ret);
 
                                                     XmlDocument doc = new XmlDocument();
-                                                    //XmlReaderSettings settings = new XmlReaderSettings();
-                                                    //settings.IgnoreComments = true;//忽略文档里面的注释
-                                                    //XmlReader reader = XmlReader.Create(ret, settings);
                                                     doc.LoadXml(ret);
                                                     //root=CWRE945Message
                                                     XmlNode xn = doc.SelectSingleNode("CWRE945Message");
 
                                                     //get all child node
                                                     XmlNodeList xnl = xn.ChildNodes;
-
-                                                    
-
-                                                    //reader.Close();
                                                 }
                                                 else
                                                 {
@@ -107,12 +100,18 @@ namespace AutoGetXML.Job
                                             try
                                             {
                                                 XmlDocument doc = new XmlDocument();
-                                                doc.Load(@".\goods_receipt_CWRE861Message.xml");
+                                                //XmlReaderSettings settings = new XmlReaderSettings();
+                                                //settings.IgnoreComments = true;//忽略文档里面的注释
+                                                //XmlReader reader = XmlReader.Create(ret, settings);
+                                                var apppath = AppDomain.CurrentDomain.BaseDirectory + @"\\goods_receipt_CWRE861Message.xml";
+                                                doc.Load(apppath);
 
-                                                var ret = HttpClientHelper.PostResponse(Url,doc.InnerXml);
+                                                //reader.Close();
+
+                                                var ret = HttpClientHelper.PostResponse(Url, doc.InnerXml);
                                                 if (ret != null)
                                                 {
-                                                    logger.DebugFormat("***PostResponse:{0}", ret);                                                    
+                                                    logger.DebugFormat("***PostResponse:{0}", ret);
                                                 }
                                                 else
                                                 {
