@@ -11,7 +11,8 @@ del /Q log
 del /Q getfilepath
 del /Q postfilepath
 
-XCOPY ..\Debug\AutoGetXML* ..\RtmV1\ /e /y
+
+XCOPY ..\Debug\* ..\RtmV1\ /e /y
 
 cd ..\RtmV1
 

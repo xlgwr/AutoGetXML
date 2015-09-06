@@ -181,7 +181,7 @@ namespace AutoGetXML.Job
                                         }
                                         else
                                         {
-                                            var apppath = AppDomain.CurrentDomain.BaseDirectory + @"\\goods_receipt_CWRE861Message.xml";
+                                            var apppath = AppDomain.CurrentDomain.BaseDirectory + @"\demoXML\goods_receipt_CWRE861Message.xml";
                                             logger.DebugFormat("**********##########当前接口:{0}, Url:{1} #开始上传...", tmpcurrType, item.address);
                                             logger.DebugFormat("**********##########当前接口:{0}, #开始上传 FilePath:{1}", tmpcurrType, apppath);
 

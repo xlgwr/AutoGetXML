@@ -141,6 +141,9 @@
     <None Include="_srv_start.cmd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="_srv_all_update_rtmv1.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="_srv_test_update_rtmv1.cmd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -152,16 +155,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="goods_issue_CWRE856Message.xml">
+    <None Include="demoXML\goods_issue_CWRE856Message.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="goods_receipt_CWRE861Message.xml">
+    <None Include="demoXML\goods_receipt_CWRE861Message.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="outbound_CWRE940Message.xml">
+    <None Include="demoXML\outbound_CWRE940Message.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="inbound_CWRE945Message.xml">
+    <None Include="demoXML\inbound_CWRE945Message.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
