@@ -1,19 +1,39 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql
-Source Server Version : 50626
-Source Host           : 127.0.0.1:3306
+Source Server         : 192.168.1.7
+Source Server Version : 50611
+Source Host           : 192.168.1.7:3306
 Source Database       : anxinwh
 
 Target Server Type    : MYSQL
-Target Server Version : 50626
+Target Server Version : 50611
 File Encoding         : 65001
 
-Date: 2015-09-06 12:57:49
+Date: 2015-09-08 11:47:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for m_checkpoint
+-- ----------------------------
+DROP TABLE IF EXISTS `m_checkpoint`;
+CREATE TABLE `m_checkpoint` (
+  `CheckPointNo` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `CheckTime` datetime DEFAULT NULL,
+  `Remark` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `AddDateTime` datetime DEFAULT NULL,
+  `UpdUserNo` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `UpdDateTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`CheckPointNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of m_checkpoint
+-- ----------------------------
+INSERT INTO `m_checkpoint` VALUES ('01', '2015-09-06 19:39:10', null, null, null, null);
+INSERT INTO `m_checkpoint` VALUES ('02', '2015-09-06 19:37:19', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for m_classinfo
@@ -37,13 +57,15 @@ CREATE TABLE `m_classinfo` (
 -- ----------------------------
 -- Records of m_classinfo
 -- ----------------------------
+INSERT INTO `m_classinfo` VALUES ('11111', '1', '11111111111', '222222222', '3333333333', '1', '1', null, '', '2015-09-07 16:21:01', null);
+INSERT INTO `m_classinfo` VALUES ('222', '1', '22222', '2', '2', '2', '0', null, '', '2015-09-07 17:03:59', null);
 
 -- ----------------------------
 -- Table structure for m_depot
 -- ----------------------------
 DROP TABLE IF EXISTS `m_depot`;
 CREATE TABLE `m_depot` (
-  `depot` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `depot_no` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
   `depot_nm` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `remark` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` smallint(6) NOT NULL,
@@ -51,12 +73,82 @@ CREATE TABLE `m_depot` (
   `upduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
   `addtime` datetime DEFAULT NULL,
   `updtime` datetime DEFAULT NULL,
-  PRIMARY KEY (`depot`)
+  PRIMARY KEY (`depot_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of m_depot
 -- ----------------------------
+INSERT INTO `m_depot` VALUES ('11111111', 'eeeeeeeeeee', '11111111', '1', null, '', null, '2015-09-07 14:31:47');
+INSERT INTO `m_depot` VALUES ('22222222', '2222', '2222222222', '1', null, '', null, '2015-09-07 14:51:51');
+INSERT INTO `m_depot` VALUES ('26562999', '石岩仓库001', '测试仓库 误删', '0', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for m_devicemodel
+-- ----------------------------
+DROP TABLE IF EXISTS `m_devicemodel`;
+CREATE TABLE `m_devicemodel` (
+  `ModelNo` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `ModelName` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `ModelFlag` int(11) NOT NULL COMMENT '0：无源信号采集(默认)； 1：有源信号采集',
+  `PararmNm1` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm2` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm3` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm4` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm5` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm6` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm7` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm8` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm9` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm10` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm11` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm12` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm13` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm14` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm15` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm16` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm17` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `PararmNm18` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `ModelRemark` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `AddDateTime` datetime DEFAULT NULL,
+  `UpdDateTime` datetime DEFAULT NULL,
+  `UpdUserNo` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`ModelNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of m_devicemodel
+-- ----------------------------
+INSERT INTO `m_devicemodel` VALUES ('200', '有源设备(COM)', '1', '信号增益', '通信地址', '波特率/接收端口', '外部触发延时', '继电器闭合时间', '蜂鸣时间', '触发读方式', '同张标签间隔', '设备上传间隔', '备用参数10', '备用参数11', '备用参数12', '备用参数13', '备用参数14', '备用参数15', '备用参数16', '执行间隔 (s)', '更新标志 (0/1)', '', '2012-07-04 17:39:48', '2012-07-27 16:07:28', 'admin');
+INSERT INTO `m_devicemodel` VALUES ('201', '有源设备(UDP)', '1', '通信地址', '设备端口', '服务器端口', '备用参数4', '备用参数5', '备用参数6', '备用参数7', '备用参数8', '备用参数9', '备用参数10', '备用参数11', '备用参数12', '备用参数13', '备用参数14', '备用参数15', '备用参数16', '执行间隔 (s)', '更新标志 (0/1)', '', '2012-08-09 09:35:54', '2012-08-09 09:36:08', 'admin');
+INSERT INTO `m_devicemodel` VALUES ('300', '有源设备(COM/TCP)', '1', '备用参数1', '备用参数2', '波特率/接收端口', '接收增益修改', '发送功率修改', '衰减器功率修改', '接收增益值', '发送功率值', '衰减器功率值', '备用参数10', '备用参数11', '备用参数12', '备用参数13', '备用参数14', '备用参数15', '备用参数16', '执行间隔 (s)', '更新标志 (0/1)', null, '2012-08-17 18:53:47', '2012-08-17 18:53:52', 'admin');
+INSERT INTO `m_devicemodel` VALUES ('400', '无源设备(COM/TCP)', '0', '端口号', '启用天线', '信号增益', '信号类型', '设备参数', '备用参数6', '备用参数7', '备用参数8', '备用参数9', '备用参数10', '备用参数11', '备用参数12', '备用参数13', '备用参数14', '备用参数15', '备用参数16', '执行间隔 (s)', '更新标志 (0/1)', null, '2015-09-06 16:54:30', '2015-09-06 16:54:34', 'admin');
+
+-- ----------------------------
+-- Table structure for m_devicerelation
+-- ----------------------------
+DROP TABLE IF EXISTS `m_devicerelation`;
+CREATE TABLE `m_devicerelation` (
+  `RelationNo` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `TerminalNo` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `Relation1` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `Relation2` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `Relation3` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `Relation4` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `Relation5` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `Relation6` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `Relation7` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `Relation8` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`RelationNo`,`TerminalNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of m_devicerelation
+-- ----------------------------
+INSERT INTO `m_devicerelation` VALUES ('24A3D84D53D6493AABFC478E1B9E963F', '5', '1', '512', '', '', null, null, null, null);
+INSERT INTO `m_devicerelation` VALUES ('74636BE18884434198707C6B2E7E2D37', '2', '1', '521', '', '', null, null, null, null);
+INSERT INTO `m_devicerelation` VALUES ('E0C273AAA0F04B4B9564A2FC2FBFD5C4', '3', '1', '513', '', '', null, null, null, null);
+INSERT INTO `m_devicerelation` VALUES ('EAE5761635E2451EB3548307D227CC8F', '1', '1', '512', '', '', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for m_parameter
@@ -71,14 +163,20 @@ CREATE TABLE `m_parameter` (
   `upduser` varchar(16) DEFAULT NULL,
   `addtime` datetime DEFAULT NULL,
   `updtime` datetime DEFAULT NULL,
-  `org_no` varchar(16) DEFAULT NULL,
+  `depot_no` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`paramkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of m_parameter
 -- ----------------------------
-INSERT INTO `m_parameter` VALUES ('autoGetXMLMin', '5', '每N分钟获取接口xml', '0', 'xlg', 'xlg', '2015-09-01 11:13:59', '2015-09-01 11:14:03', 'admin');
+INSERT INTO `m_parameter` VALUES ('autoGetXMLMin', '5', '每N分钟获取接口xml', '0', 'xlg', 'xlg', '2015-09-01 11:13:59', '2015-09-01 11:14:03', 'ANXIN01');
+INSERT INTO `m_parameter` VALUES ('CheckInterval', '10', '定时点检间隔(秒)', '1', null, null, null, null, 'ANXIN01');
+INSERT INTO `m_parameter` VALUES ('HeartInterval', '2000', '设备心跳上传间隔(:毫秒)', '1', null, null, null, null, 'ANXIN01');
+INSERT INTO `m_parameter` VALUES ('ReconInterval', '2000', '采集重连间隔(毫秒)', '1', null, null, null, null, 'ANXIN01');
+INSERT INTO `m_parameter` VALUES ('RepeatInterval', '5000', '卡重复扫描检测间隔(豪秒)', '1', 'admin', null, '2015-08-07 20:32:44', null, 'ANXIN01');
+INSERT INTO `m_parameter` VALUES ('TagUpdInterval', '20', '标签更新检查间隔(秒)', '1', 'admin', null, '2015-08-07 20:33:04', null, 'ANXIN01');
+INSERT INTO `m_parameter` VALUES ('TagUpdTime', '20', '标签更新时间	', '1', null, null, null, null, 'ANXIN01');
 
 -- ----------------------------
 -- Table structure for m_roledetail
@@ -116,6 +214,31 @@ CREATE TABLE `m_roles` (
 -- ----------------------------
 -- Records of m_roles
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for m_shelf
+-- ----------------------------
+DROP TABLE IF EXISTS `m_shelf`;
+CREATE TABLE `m_shelf` (
+  `shelf_no` varchar(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `shelf_nm` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `depot_no` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shelf_type` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `area` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark` varchar(258) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` bigint(20) DEFAULT NULL,
+  `adduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`shelf_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of m_shelf
+-- ----------------------------
+INSERT INTO `m_shelf` VALUES ('SY001', '石岩仓库001', '是', '1', null, null, null, '1', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for m_sysmodule
@@ -162,6 +285,55 @@ CREATE TABLE `m_sysmoduledetail` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for m_terminaldevice
+-- ----------------------------
+DROP TABLE IF EXISTS `m_terminaldevice`;
+CREATE TABLE `m_terminaldevice` (
+  `TerminalNo` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `ModelNo` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `TerminalType` int(32) NOT NULL,
+  `TerminalName` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `shelf_no` varchar(16) COLLATE utf8_bin DEFAULT NULL,
+  `ConnectFlag` int(11) NOT NULL COMMENT '0：网口(默认)； 1：串口',
+  `SerialNoIPAddr` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `ReadTime` int(11) NOT NULL,
+  `ReadInterval` int(11) NOT NULL,
+  `ParamVal1` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal2` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal3` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal4` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal5` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal6` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal7` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal8` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal9` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal10` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal11` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal12` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal13` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal14` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal15` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal16` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal17` varchar(32) COLLATE utf8_bin NOT NULL,
+  `ParamVal18` varchar(32) COLLATE utf8_bin NOT NULL,
+  `TrmnRemark` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `CipherText` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `ParamUpdTime` datetime DEFAULT NULL,
+  `TrmnUpdTime` datetime DEFAULT NULL,
+  `TrmnStatus` bit(1) NOT NULL COMMENT 'True：启用(默认；False：禁用',
+  `AddDateTime` datetime DEFAULT NULL,
+  `UpdDateTime` datetime DEFAULT NULL,
+  `UpdUserNo` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `depot_no` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`TerminalNo`,`ModelNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of m_terminaldevice
+-- ----------------------------
+INSERT INTO `m_terminaldevice` VALUES ('6', '400', '1', '安信仓库1号', 'SY001', '1', '192.168.1.199', '1', '50', '27011', '1,0,0,0', '15', '0', '1,2,6', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, null, '2015-09-07 09:30:56', '', null, null, null, 'ANXIN01');
+
+-- ----------------------------
 -- Table structure for m_users
 -- ----------------------------
 DROP TABLE IF EXISTS `m_users`;
@@ -184,7 +356,7 @@ CREATE TABLE `m_users` (
 -- ----------------------------
 -- Records of m_users
 -- ----------------------------
-INSERT INTO `m_users` VALUES ('9001', 'xlg', 'it', '123', '0', '0', '1', 'xlg', 'xlg', '2015-09-02 18:42:46', '2015-09-02 18:42:49', 'it');
+INSERT INTO `m_users` VALUES ('1', 'test', 'it', '123', 'it', '1', '1', 'it', 'it', '2015-09-05 10:24:07', '2015-09-05 10:24:12', 'it');
 
 -- ----------------------------
 -- Table structure for t_interface
@@ -201,19 +373,12 @@ CREATE TABLE `t_interface` (
   `remark` varchar(256) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`recd_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_interface
 -- ----------------------------
-INSERT INTO `t_interface` VALUES ('1', 'http://127.0.0.1:3000/whs/inbound', '1', '2015-09-05 13:31', '0', 'getfilepath', '0', '1', '0');
-INSERT INTO `t_interface` VALUES ('2', 'http://127.0.0.1:3000/whs/goods_receipt', '2', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
-INSERT INTO `t_interface` VALUES ('3', 'http://127.0.0.1:3000/whs/goods_movement/', '3', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
-INSERT INTO `t_interface` VALUES ('4', 'http://127.0.0.1:3000/whs/xxxxxx/', '4', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
-INSERT INTO `t_interface` VALUES ('5', 'http://127.0.0.1:3000/whs/outbound', '5', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
-INSERT INTO `t_interface` VALUES ('6', 'http://127.0.0.1:3000/whs/goods_issue', '6', '2015-09-05 13:31', '0', 'getfilepath', '0', '1', '0');
-INSERT INTO `t_interface` VALUES ('7', 'http://127.0.0.1:3000/whs/xxxxxx/', '7', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
-INSERT INTO `t_interface` VALUES ('8', 'http://127.0.0.1:3000/whs/xxxxx/', '8', '2015-09-05 13:31', '1', 'postfilepath', '1', '1', '0');
+INSERT INTO `t_interface` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for t_stockin
@@ -242,25 +407,46 @@ CREATE TABLE `t_stockin` (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_stockinctnno`;
 CREATE TABLE `t_stockinctnno` (
-  `ctnno_id` varchar(32) NOT NULL,
-  `stockin_no` varchar(32) DEFAULT NULL,
-  `item_no` varchar(10) DEFAULT NULL,
-  `prdct_no` varchar(48) DEFAULT NULL,
-  `ctnno_no` varchar(30) DEFAULT NULL,
+  `stockin_no` varchar(32) NOT NULL,
+  `prdct_no` varchar(48) NOT NULL,
+  `pqty` float NOT NULL,
   `qty` float DEFAULT NULL,
-  `nwet` float NOT NULL,
-  `gwet` float NOT NULL,
-  `rfid_no` varchar(30) DEFAULT NULL,
-  `status` smallint(6) DEFAULT NULL,
+  `nwet` float DEFAULT NULL,
+  `gwet` float DEFAULT NULL,
+  `rfid_no` varchar(96) NOT NULL,
+  `status` bit(1) DEFAULT NULL,
   `adduser` varchar(16) NOT NULL,
   `upduser` varchar(16) NOT NULL,
   `addtime` datetime NOT NULL,
   `updtime` datetime NOT NULL,
-  PRIMARY KEY (`ctnno_id`)
+  PRIMARY KEY (`stockin_no`,`prdct_no`,`rfid_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_stockinctnno
+-- ----------------------------
+INSERT INTO `t_stockinctnno` VALUES ('test001', 'lcc', '0', null, null, null, '005001', '', '', '', '2015-09-06 17:52:16', '2015-09-06 17:52:19');
+
+-- ----------------------------
+-- Table structure for t_stockinctnnodetail
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockinctnnodetail`;
+CREATE TABLE `t_stockinctnnodetail` (
+  `rfid_no` varchar(96) COLLATE utf8_unicode_ci NOT NULL,
+  `ctnno_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `qty` float DEFAULT NULL,
+  `nwet` float NOT NULL,
+  `gwet` float NOT NULL,
+  `status` bit(1) DEFAULT NULL,
+  `adduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`rfid_no`,`ctnno_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of t_stockinctnnodetail
 -- ----------------------------
 
 -- ----------------------------
@@ -321,25 +507,44 @@ CREATE TABLE `t_stockout` (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_stockoutctnno`;
 CREATE TABLE `t_stockoutctnno` (
-  `ctnno_id` varchar(32) NOT NULL,
-  `stockin_no` varchar(32) DEFAULT NULL,
-  `item_no` varchar(10) DEFAULT NULL,
-  `prdct_no` varchar(48) DEFAULT NULL,
-  `ctnno_no` varchar(30) DEFAULT NULL,
+  `stockout_id` varchar(32) NOT NULL,
+  `prdct_no` varchar(48) NOT NULL,
   `qty` float DEFAULT NULL,
   `nwet` float NOT NULL,
   `gwet` float NOT NULL,
-  `rfid_no` varchar(30) DEFAULT NULL,
-  `status` smallint(6) DEFAULT NULL,
+  `rfid_no` varchar(96) NOT NULL,
+  `status` bit(1) DEFAULT NULL,
   `adduser` varchar(16) NOT NULL,
   `upduser` varchar(16) NOT NULL,
   `addtime` datetime NOT NULL,
   `updtime` datetime NOT NULL,
-  PRIMARY KEY (`ctnno_id`)
+  PRIMARY KEY (`stockout_id`,`prdct_no`,`rfid_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_stockoutctnno
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_stockoutctnnodetail
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockoutctnnodetail`;
+CREATE TABLE `t_stockoutctnnodetail` (
+  `rfid_no` varchar(96) COLLATE utf8_unicode_ci NOT NULL,
+  `ctnno_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `qty` float DEFAULT NULL,
+  `nwet` float NOT NULL,
+  `gwet` float NOT NULL,
+  `status` bit(1) DEFAULT NULL,
+  `adduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `addtime` datetime NOT NULL,
+  `updtime` datetime NOT NULL,
+  PRIMARY KEY (`rfid_no`,`ctnno_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of t_stockoutctnnodetail
 -- ----------------------------
 
 -- ----------------------------
@@ -390,3 +595,31 @@ CREATE TABLE `t_syslogrecd` (
 -- ----------------------------
 -- Records of t_syslogrecd
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_terminaalarm
+-- ----------------------------
+DROP TABLE IF EXISTS `t_terminaalarm`;
+CREATE TABLE `t_terminaalarm` (
+  `AlarmNo` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `AlarmType` smallint(6) NOT NULL COMMENT '0：采集连接\r\n            1：采集启动\r\n            2：采集扫描',
+  `TerminalNo` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `AlarmDate` datetime NOT NULL,
+  `AlarmFlag` int(11) NOT NULL COMMENT '0: 未处理；1: 已处理\r\n            ',
+  `AlarmReason` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `Remark` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `UpdUserNo` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `UpdDateTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`AlarmNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of t_terminaalarm
+-- ----------------------------
+INSERT INTO `t_terminaalarm` VALUES ('26B491A44E59467AA8020379636633EE', '0', '1', '2015-09-06 18:26:41', '0', '采集设备启动异常，自动重连！', null, null, null);
+INSERT INTO `t_terminaalarm` VALUES ('3291937C5C6E4C068C831082B060EAE8', '0', '6', '2015-09-06 18:44:56', '1', '采集设备启动异常，自动重连！', null, null, null);
+INSERT INTO `t_terminaalarm` VALUES ('6A40CC070F494C128550E1696473C57F', '0', '3', '2015-09-06 18:26:20', '1', '采集设备启动异常，自动重连！', null, null, null);
+INSERT INTO `t_terminaalarm` VALUES ('7FA483433AC34EC69BB2AAD5D377202E', '0', '3', '2015-09-06 18:26:41', '1', '采集设备启动异常，自动重连！', null, null, null);
+INSERT INTO `t_terminaalarm` VALUES ('A37CF68F6808492DB9E8007E5D346D99', '0', '1', '2015-09-06 18:26:20', '1', '采集设备启动异常，自动重连！', null, null, null);
+INSERT INTO `t_terminaalarm` VALUES ('BB3ADA5935A9485785B103DB906A85A4', '0', '3', '2015-09-06 18:34:07', '0', '采集设备启动异常，自动重连！', null, null, null);
+INSERT INTO `t_terminaalarm` VALUES ('CA15C0102F824FFBA95CE721761F316F', '0', '3', '2015-09-06 18:34:07', '0', '采集设备启动异常，自动重连！', null, null, null);
