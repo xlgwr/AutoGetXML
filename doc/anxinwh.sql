@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.1.7
+Source Server         : anxinwh
 Source Server Version : 50611
 Source Host           : 192.168.1.7:3306
 Source Database       : anxinwh
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50611
 File Encoding         : 65001
 
-Date: 2015-09-08 11:47:29
+Date: 2015-09-11 15:26:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -179,6 +179,35 @@ INSERT INTO `m_parameter` VALUES ('TagUpdInterval', '20', '标签更新检查间
 INSERT INTO `m_parameter` VALUES ('TagUpdTime', '20', '标签更新时间	', '1', null, null, null, null, 'ANXIN01');
 
 -- ----------------------------
+-- Table structure for m_products
+-- ----------------------------
+DROP TABLE IF EXISTS `m_products`;
+CREATE TABLE `m_products` (
+  `prdct_no` varchar(48) NOT NULL,
+  `prdct_nm` varchar(32) NOT NULL,
+  `prdct_abbr` varchar(255) NOT NULL,
+  `depot_no` varchar(255) NOT NULL,
+  `prdct_type` varchar(255) NOT NULL,
+  `unit` varchar(255) NOT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `upduser` varchar(255) DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
+  `adduser` varchar(255) DEFAULT NULL,
+  `status` smallint(6) NOT NULL,
+  PRIMARY KEY (`prdct_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of m_products
+-- ----------------------------
+INSERT INTO `m_products` VALUES ('12', '2', '22', '2', '2', '2', '2', '', '2015-09-10 13:31:49', '2015-09-10 13:32:46', '', '1');
+INSERT INTO `m_products` VALUES ('122', '22', '22', '2', '22', '2', '22', null, '2015-09-10 13:32:19', null, '', '1');
+INSERT INTO `m_products` VALUES ('1222', '2', '2', '2', '2', '2', '2', null, '2015-09-10 13:32:03', null, '', '1');
+INSERT INTO `m_products` VALUES ('2', '2', '2', '2', '2', '2', '2', null, '2015-09-10 13:31:36', null, '', '1');
+INSERT INTO `m_products` VALUES ('ss', 's', 'ss', 'ss', 'ss', 'ss', 'sss', null, '2015-09-10 14:52:41', null, '', '1');
+
+-- ----------------------------
 -- Table structure for m_roledetail
 -- ----------------------------
 DROP TABLE IF EXISTS `m_roledetail`;
@@ -238,6 +267,7 @@ CREATE TABLE `m_shelf` (
 -- ----------------------------
 -- Records of m_shelf
 -- ----------------------------
+INSERT INTO `m_shelf` VALUES ('1', '1', '1', '2', '1', '1', '1', '1', '', '', '2015-09-11 09:51:06', '2015-09-11 09:51:20');
 INSERT INTO `m_shelf` VALUES ('SY001', '石岩仓库001', '是', '1', null, null, null, '1', null, null, null, null);
 
 -- ----------------------------
@@ -331,7 +361,7 @@ CREATE TABLE `m_terminaldevice` (
 -- ----------------------------
 -- Records of m_terminaldevice
 -- ----------------------------
-INSERT INTO `m_terminaldevice` VALUES ('6', '400', '1', '安信仓库1号', 'SY001', '1', '192.168.1.199', '1', '50', '27011', '1,0,0,0', '15', '0', '1,2,6', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, null, '2015-09-07 09:30:56', '', null, null, null, 'ANXIN01');
+INSERT INTO `m_terminaldevice` VALUES ('6', '400', '1', '安信仓库1号', 'SY001', '1', '192.168.1.199', '1', '50', '27011', '1,0,0,0', '15', '0', '1,2,6', '1qw', '1w', '1w', '1w', '1w', '1w', '1w', '1w', '1w', '1w', '1w', '1ww', '1ww', '1w', '1ww', '2015-09-10 17:30:34', '2015-09-07 09:30:56', '', '2015-09-17 17:30:41', '2015-09-23 17:30:47', '1', 'ANXIN01');
 
 -- ----------------------------
 -- Table structure for m_users
@@ -359,6 +389,72 @@ CREATE TABLE `m_users` (
 INSERT INTO `m_users` VALUES ('1', 'test', 'it', '123', 'it', '1', '1', 'it', 'it', '2015-09-05 10:24:07', '2015-09-05 10:24:12', 'it');
 
 -- ----------------------------
+-- Table structure for t_cash
+-- ----------------------------
+DROP TABLE IF EXISTS `t_cash`;
+CREATE TABLE `t_cash` (
+  `cash_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `cash_date` datetime DEFAULT NULL,
+  `user_no` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_nm` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custorder` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contaccter` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tel` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pickidentity` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `checkcode` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `carrrier` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tanspotno` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `vendorcode` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gwgt` float DEFAULT NULL,
+  `nwgt` float DEFAULT NULL,
+  `coo` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `remark` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`cash_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of t_cash
+-- ----------------------------
+INSERT INTO `t_cash` VALUES ('p0001', '2015-09-11 13:50:33', '001', null, null, '李四', '23981396', '132659874569', '542659874585125569', null, null, null, null, '25', '20', null, null, null, null, null, null, null);
+INSERT INTO `t_cash` VALUES ('p0002', '2015-09-09 13:52:17', '002', null, null, '张三', '23981396', '132659874569', '542659874585125569', null, null, null, null, '20', '18', null, null, null, null, null, null, null);
+
+-- ----------------------------
+-- Table structure for t_cashdetail
+-- ----------------------------
+DROP TABLE IF EXISTS `t_cashdetail`;
+CREATE TABLE `t_cashdetail` (
+  `cash_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `item_no` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `prdct_no` varchar(48) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `unit` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qty` float DEFAULT NULL,
+  `quanlity` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ctnno` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `package` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `adduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`cash_no`,`item_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of t_cashdetail
+-- ----------------------------
+INSERT INTO `t_cashdetail` VALUES ('p0001', '1', '1001', null, null, '1000', null, '001', '1x12', null, null, null, null, null, null);
+INSERT INTO `t_cashdetail` VALUES ('p0001', '2', '1002', null, null, '150', null, '002', '1x24', null, null, null, null, null, null);
+INSERT INTO `t_cashdetail` VALUES ('p0002', '3', '1001', null, null, '2000', null, '003', '1x10', null, null, null, null, null, null);
+
+-- ----------------------------
 -- Table structure for t_interface
 -- ----------------------------
 DROP TABLE IF EXISTS `t_interface`;
@@ -379,6 +475,53 @@ CREATE TABLE `t_interface` (
 -- Records of t_interface
 -- ----------------------------
 INSERT INTO `t_interface` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1');
+
+-- ----------------------------
+-- Table structure for t_stock
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stock`;
+CREATE TABLE `t_stock` (
+  `prdct_no` varchar(48) NOT NULL,
+  `pqty` float NOT NULL DEFAULT '0',
+  `qty` float NOT NULL DEFAULT '0',
+  `nwet` float NOT NULL DEFAULT '0',
+  `gwet` float NOT NULL DEFAULT '0',
+  `remark` varchar(256) DEFAULT NULL,
+  `status` bit(1) NOT NULL DEFAULT b'1',
+  `adduser` varchar(16) DEFAULT NULL,
+  `upduser` varchar(16) DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`prdct_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_stock
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_stockdetail
+-- ----------------------------
+DROP TABLE IF EXISTS `t_stockdetail`;
+CREATE TABLE `t_stockdetail` (
+  `prdct_no` varchar(48) COLLATE utf8_unicode_ci NOT NULL,
+  `rfid_no` varchar(96) COLLATE utf8_unicode_ci NOT NULL,
+  `shelf_no` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `qty` float NOT NULL DEFAULT '0',
+  `nwet` float NOT NULL DEFAULT '0',
+  `gwet` float NOT NULL DEFAULT '0',
+  `remark` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` bit(1) NOT NULL DEFAULT b'1',
+  `adduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`prdct_no`,`rfid_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of t_stockdetail
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_stockin
@@ -409,23 +552,25 @@ DROP TABLE IF EXISTS `t_stockinctnno`;
 CREATE TABLE `t_stockinctnno` (
   `stockin_no` varchar(32) NOT NULL,
   `prdct_no` varchar(48) NOT NULL,
-  `pqty` float NOT NULL,
-  `qty` float DEFAULT NULL,
-  `nwet` float DEFAULT NULL,
-  `gwet` float DEFAULT NULL,
+  `pqty` float NOT NULL DEFAULT '0',
+  `qty` float NOT NULL DEFAULT '0',
+  `nwet` float DEFAULT '0',
+  `gwet` float DEFAULT '0',
   `rfid_no` varchar(96) NOT NULL,
-  `status` bit(1) DEFAULT NULL,
-  `adduser` varchar(16) NOT NULL,
-  `upduser` varchar(16) NOT NULL,
-  `addtime` datetime NOT NULL,
-  `updtime` datetime NOT NULL,
+  `status` bit(1) NOT NULL DEFAULT b'1',
+  `adduser` varchar(16) DEFAULT NULL,
+  `upduser` varchar(16) DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
   PRIMARY KEY (`stockin_no`,`prdct_no`,`rfid_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_stockinctnno
 -- ----------------------------
-INSERT INTO `t_stockinctnno` VALUES ('test001', 'lcc', '0', null, null, null, '005001', '', '', '', '2015-09-06 17:52:16', '2015-09-06 17:52:19');
+INSERT INTO `t_stockinctnno` VALUES ('201509111', '1', '5', '50', '12.5', '0', '20150911115002', '', '1', '1', '2015-09-11 15:10:10', '2015-09-11 15:10:10');
+INSERT INTO `t_stockinctnno` VALUES ('201509111', '1', '6', '60', '15', '0', '20150911116001', '', '1', '1', '2015-09-11 15:08:55', '2015-09-11 15:08:55');
+INSERT INTO `t_stockinctnno` VALUES ('test001', 'lcc', '0', '0', '0', '0', '005001', '', '', '', '2015-09-06 17:52:16', '2015-09-06 17:52:19');
 
 -- ----------------------------
 -- Table structure for t_stockinctnnodetail
@@ -434,20 +579,31 @@ DROP TABLE IF EXISTS `t_stockinctnnodetail`;
 CREATE TABLE `t_stockinctnnodetail` (
   `rfid_no` varchar(96) COLLATE utf8_unicode_ci NOT NULL,
   `ctnno_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `qty` float DEFAULT NULL,
-  `nwet` float NOT NULL,
-  `gwet` float NOT NULL,
-  `status` bit(1) DEFAULT NULL,
-  `adduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `upduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `addtime` datetime NOT NULL,
-  `updtime` datetime NOT NULL,
+  `qty` float NOT NULL DEFAULT '0',
+  `nwet` float DEFAULT '0',
+  `gwet` float DEFAULT '0',
+  `status` bit(1) NOT NULL DEFAULT b'1',
+  `adduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
   PRIMARY KEY (`rfid_no`,`ctnno_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of t_stockinctnnodetail
 -- ----------------------------
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911115002', '10', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:10:10', '2015-09-11 15:10:10');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911115002', '11', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:10:10', '2015-09-11 15:10:10');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911115002', '7', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:10:10', '2015-09-11 15:10:10');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911115002', '8', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:10:10', '2015-09-11 15:10:10');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911115002', '9', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:10:10', '2015-09-11 15:10:10');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911116001', '1', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:08:55', '2015-09-11 15:08:55');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911116001', '2', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:08:55', '2015-09-11 15:08:55');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911116001', '3', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:08:55', '2015-09-11 15:08:55');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911116001', '4', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:08:55', '2015-09-11 15:08:55');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911116001', '5', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:08:55', '2015-09-11 15:08:55');
+INSERT INTO `t_stockinctnnodetail` VALUES ('20150911116001', '6', '10', '2.5', '0', '', '1', '1', '2015-09-11 15:08:55', '2015-09-11 15:08:55');
 
 -- ----------------------------
 -- Table structure for t_stockindetail
@@ -509,15 +665,15 @@ DROP TABLE IF EXISTS `t_stockoutctnno`;
 CREATE TABLE `t_stockoutctnno` (
   `stockout_id` varchar(32) NOT NULL,
   `prdct_no` varchar(48) NOT NULL,
-  `qty` float DEFAULT NULL,
-  `nwet` float NOT NULL,
-  `gwet` float NOT NULL,
+  `qty` float NOT NULL DEFAULT '0',
+  `nwet` float DEFAULT '0',
+  `gwet` float DEFAULT '0',
   `rfid_no` varchar(96) NOT NULL,
-  `status` bit(1) DEFAULT NULL,
-  `adduser` varchar(16) NOT NULL,
-  `upduser` varchar(16) NOT NULL,
-  `addtime` datetime NOT NULL,
-  `updtime` datetime NOT NULL,
+  `status` bit(1) NOT NULL DEFAULT b'1',
+  `adduser` varchar(16) DEFAULT NULL,
+  `upduser` varchar(16) DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
   PRIMARY KEY (`stockout_id`,`prdct_no`,`rfid_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -532,14 +688,14 @@ DROP TABLE IF EXISTS `t_stockoutctnnodetail`;
 CREATE TABLE `t_stockoutctnnodetail` (
   `rfid_no` varchar(96) COLLATE utf8_unicode_ci NOT NULL,
   `ctnno_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `qty` float DEFAULT NULL,
-  `nwet` float NOT NULL,
-  `gwet` float NOT NULL,
-  `status` bit(1) DEFAULT NULL,
-  `adduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `upduser` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `addtime` datetime NOT NULL,
-  `updtime` datetime NOT NULL,
+  `qty` float NOT NULL DEFAULT '0',
+  `nwet` float DEFAULT '0',
+  `gwet` float DEFAULT '0',
+  `status` bit(1) NOT NULL DEFAULT b'1',
+  `adduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `upduser` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `updtime` datetime DEFAULT NULL,
   PRIMARY KEY (`rfid_no`,`ctnno_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
